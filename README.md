@@ -9,6 +9,8 @@ Proyecto base para aplicaciones Node.js con TypeScript, Express y TypeORM, orien
 ```
 base-node-ts/
 ├── src/
+│   ├── entry-dev.ts          # Usado en desarrollo con ts-node
+│   ├── entry-prod.ts         # Usado en producción con module-alias
 │   ├── app.ts                # Configuración principal de la app Express
 │   ├── server.ts             # Arranque del servidor y conexión a la base de datos
 │   ├── data-source.ts        # Configuración de TypeORM y conexión a la base de datos
@@ -39,6 +41,7 @@ base-node-ts/
 - **Validación** con Zod y middlewares personalizados.
 - **Logger** con Winston (configurado para consola, sin archivos).
 - **Separación de middlewares** para validación y manejo de errores.
+- **Soporte para alias de rutas (`@/`)**: Alias configurados para imports limpios y mantenibles, usando `tsconfig-paths` en desarrollo y `module-alias` en producción.
 
 ## Principales Librerías
 
@@ -51,6 +54,8 @@ base-node-ts/
 - [compression](https://github.com/expressjs/compression): Compresión HTTP.
 - [dotenv](https://github.com/motdotla/dotenv): Variables de entorno.
 - [bcrypt](https://github.com/kelektiv/node.bcrypt.js): Hash de contraseñas.
+- [tsconfig-paths](https://github.com/dividab/tsconfig-paths): Soporte para aliases en tiempo de desarrollo con ts-node.
+- [module-alias](https://github.com/ilearnio/module-alias): Resolución de imports con alias en tiempo de ejecución (producción).
 
 ## Comandos Útiles
 
@@ -95,6 +100,35 @@ Módulo de usuarios con estructura MVC:
 ## Variables de Entorno
 
 Configura un archivo `.env` con las variables definidas en el archivo `.env.example`
+
+## 🧩 Soporte para Alias de Rutas
+
+El proyecto está configurado para usar **aliases `@/`** en los imports, permitiendo rutas limpias y evitando el uso de imports relativos largos (`../../../`).
+
+### Configuración
+
+- En `tsconfig.json`:
+
+```jsonc
+{
+  ...
+  "baseUrl": "./src",
+  "paths": {
+    "@/*": ["*"]
+  }
+}
+```
+
+- En `package.json`:
+
+```jsonc
+{
+  ...
+  "_moduleAliases": {
+    "@": "dist"
+  }
+}
+```
 
 ## Notas
 - El proyecto está preparado para escalar agregando nuevos módulos siguiendo la misma estructura que `users`.
