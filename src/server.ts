@@ -1,8 +1,8 @@
 import 'dotenv/config';
 import 'reflect-metadata';
 import app from './app';
-import AppDataSource, { initializeDatabase } from './data-source';
-import { logger } from './utils/logger';
+import AppDataSource, { initializeDatabase } from '@/data-source';
+import { logger } from '@/utils/logger';
 import helmet from 'helmet';
 import cors from 'cors';
 import compression from 'compression';

@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
 import UsersService from '../services/UsersService';
 import { CreateUserDTO, UpdateUserDTO } from '../dtos/user.dto';
-import { AppError } from '../../middleware/error.middleware';
-import { logger } from '../../utils/logger';
-import { sendSuccess, sendCreated, sendError } from '../../utils/api.utils';
+import { AppError } from '@/middleware/error.middleware';
+import { logger } from '@/utils/logger';
+import { sendSuccess, sendCreated, sendError } from '@/utils/api.utils';
 
 class UsersController {
   constructor(private readonly usersService: UsersService) {}
