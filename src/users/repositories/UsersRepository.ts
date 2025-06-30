@@ -1,9 +1,9 @@
 import { Repository } from 'typeorm';
 import { User } from '../models/User';
-import AppDataSource from '../../data-source';
+import AppDataSource from '@/data-source';
 import { CreateUserDTO, UpdateUserDTO } from '../dtos/user.dto';
-import { AppError } from '../../middleware/error.middleware';
-import { logger } from '../../utils/logger';
+import { AppError } from '@/middleware/error.middleware';
+import { logger } from '@/utils/logger';
 import bcrypt from 'bcrypt';
 
 class UsersRepository {

@@ -1,8 +1,8 @@
 import UsersRepository from '../repositories/UsersRepository';
 import { CreateUserDTO, UpdateUserDTO } from '../dtos/user.dto';
 import { User } from '../models/User';
-import { AppError } from '../../middleware/error.middleware';
-import { logger } from '../../utils/logger';
+import { AppError } from '@/middleware/error.middleware';
+import { logger } from '@/utils/logger';
 import bcrypt from 'bcrypt';
 
 class UsersService {
